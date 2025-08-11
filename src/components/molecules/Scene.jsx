@@ -8,7 +8,7 @@ export default function Scene() {
       <RigidBody>
         <Card
           card={"/cards2-2.glb"}
-          position={{ x: 0, y: 0, z: 0 }}
+          position={{ x: 0, y: 5, z: 0 }}
           rotationZ={0}
           thisFirst={1 == 0}
           translate={1}
@@ -17,8 +17,9 @@ export default function Scene() {
         >
         </Card>
       </RigidBody>
-      <
-      <Floor></Floor>
+      <RigidBody type="fixed">
+        <Floor></Floor>
+      </RigidBody>
 
       </Physics>
       <ambientLight intensity={50}></ambientLight>
