@@ -1,37 +1,29 @@
-import { Html } from "@react-three/drei";
-import Effects from "../atoms/Effects";
-import HtmlObj from "../atoms/HtmlObj";
-import TheBox from "../atoms/TheBox";
-import TheFloor from "../atoms/TheFloor";
 import Card from "../atoms/Card";
 export default function Scene() {
   return (
     <group>
-      {/* <Effects>
-        {(texture) => {
-          return (
-            <group>
-              <TheBox size={{ x: 1, y: 1, z: 1 }} envMap={texture} name={"new-box-1"} position={[0, 0, 0]} rotation={[0, 0, 0]}></TheBox>
-            </group>)
-        }}
-      </Effects> */}
-      
       <Card
         card={"/cards2-2.glb"}
         position={{ x: 0, y: 0, z: 0 }}
-        rotationZ={Math.PI / 25}
+        rotationZ={0}
         thisFirst={1 == 0}
         translate={1}
         selected={false}
         setSelected={() => { }}
       >
       </Card>
+      <Floor></Floor>
       <ambientLight intensity={50}></ambientLight>
-      {/* <HtmlObj occlude={true} position={[0, 0, -11.5]} name={"new-html-2"}>
-        <div className="overflow-hidden h-screen w-screen border-2 border-black bg-black">
-          <p className="text-base text-black">This is a div</p>
-        </div>
-      </HtmlObj> */}
     </group>
   );
+}
+
+
+function Floor(){
+  return(
+    <mesh position={[0,-2,0]}>
+      <boxGeometry args={[10,0.2,10]}></boxGeometry>
+      <meshBasicMaterial color={"white"}></meshBasicMaterial>
+    </mesh>
+  )
 }
