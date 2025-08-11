@@ -1,7 +1,10 @@
 import Card from "../atoms/Card";
+import {Physics} from "@react-three/rapier"
 export default function Scene() {
   return (
     <group>
+      <Physics>
+
       <Card
         card={"/cards2-2.glb"}
         position={{ x: 0, y: 0, z: 0 }}
@@ -12,7 +15,11 @@ export default function Scene() {
         setSelected={() => { }}
       >
       </Card>
+      
       <Floor></Floor>
+
+      </Physics>
+      
       <ambientLight intensity={50}></ambientLight>
     </group>
   );
