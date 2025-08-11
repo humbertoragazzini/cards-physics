@@ -1,51 +1,29 @@
-import React, { useEffect, useMemo, useRef } from "react";
-import { useGLTF } from "@react-three/drei";
-import gsap, { Elastic } from "gsap";
+import { useGLTF, Clone } from "@react-three/drei";
 
-export default function Card({
-  card,
-  position,
-  positionZ,
-  rotationZ,
-  translate,
-  thisFirst,
-  children,
-  selected,
-  setSelected,
-}) {
+export default function Card({ card, position, positionZ, rotationZ, children }) {
   const { scene } = useGLTF(card);
-  const cardRef = useRef(null);
-  const tl = useRef(); // timeline stored across renders
-
-  const clonedScene = useMemo(() => {
-    const clone = scene.clone();
-    clone.traverse((child) => {
-      if (child.isMesh) {
-        child.material = child.material.clone(); // 🔥 clone material here
-        // child.material.metalness = 0.2;
-        // child.rotation.y = -Math.PI / 2;
-        // child.material.roughness = 0;
-        child.castShadow = true;
-        child.receiveShadow = true;
-      }
-    });
-    return clone;
-  }, [scene]);
-
 
   return (
     <group
       scale={[3.5, 3.5, 3.5]}
-      position={[position.x, position.y, position.x]}
+      position={[position.x, position.y, positionZ ?? position.z ?? 0]}
       rotation={[0, 0, rotationZ]}
-      ref={cardRef}
       castShadow
       receiveShadow
     >
-      <primitive object={clonedScene} />
+      <Clone
+        object={scene}
+        onClone={(obj) => {
+          obj.traverse((child) => {
+            if (child.isMesh) {
+              child.material = child.material.clone();
+              child.castShadow = true;
+              child.receiveShadow = true;
+            }
+          });
+        }}
+      />
       {children}
     </group>
   );
 }
-
-useGLTF.preload("/untitled.glb");

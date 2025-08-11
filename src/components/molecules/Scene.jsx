@@ -8,6 +8,42 @@ export default function Scene() {
       <RigidBody>
         <Card
           card={"/cards2-2.glb"}
+          position={{ x: 0, y: 5, z: 1.5 }}
+          rotationZ={0}
+          thisFirst={1 == 0}
+          translate={1}
+          selected={false}
+          setSelected={() => { }}
+        >
+        </Card>
+      </RigidBody>
+      <RigidBody>
+        <Card
+          card={"/cards2-2.glb"}
+          position={{ x: 0, y: 5, z: 1 }}
+          rotationZ={0}
+          thisFirst={1 == 0}
+          translate={1}
+          selected={false}
+          setSelected={() => { }}
+        >
+        </Card>
+      </RigidBody>
+      <RigidBody>
+        <Card
+          card={"/cards2-2.glb"}
+          position={{ x: 0, y: 5, z: 0.5 }}
+          rotationZ={0}
+          thisFirst={1 == 0}
+          translate={1}
+          selected={false}
+          setSelected={() => { }}
+        >
+        </Card>
+      </RigidBody>
+      <RigidBody>
+        <Card
+          card={"/cards2-2.glb"}
           position={{ x: 0, y: 5, z: 0 }}
           rotationZ={0}
           thisFirst={1 == 0}
