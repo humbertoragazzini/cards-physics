@@ -3,7 +3,7 @@ import { Physics, RigidBody } from "@react-three/rapier"
 export default function Scene() {
   return (
     <group>
-      <Physics>
+      <Physics debug={true}>
 
       <RigidBody>
         <Card
